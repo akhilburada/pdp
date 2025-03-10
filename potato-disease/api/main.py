@@ -7,7 +7,7 @@ import os
 
 app = FastAPI()
 
-MODEL = tf.keras.models.load_model("../saved_model/1.keras")
+MODEL = keras.models.load_model("../saved_model/1.keras")
 
 CLASS_NAMES = ['Early Blight', 'Late Blight', 'Healthy']
 
@@ -19,8 +19,6 @@ def read_file_as_image(data):
     image = np.array(Image.open(BytesIO(data)))
     print(image.shape)
     return image
-
-
 
 @app.post('/predict')
 async def predict(
